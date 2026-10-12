@@ -1,0 +1,44 @@
+ARGIX BRAND ASSETS: STATUS (updated for the "official assets" task)
+
+WHY THEY ARE NOT IN THIS PROJECT YET
+The build environment could not download anything from argix.net (its network cannot resolve that host), and the page-reading tool
+refuses image URLs. The official asset locations WERE read from the live pages, but the files themselves could not be copied.
+Nothing was recreated, traced or invented. The site shows text stand-ins until the real files are present.
+
+HOW TO ADD THEM (one command, on a machine with internet access)
+    npm run assets:fetch            # downloads every file below into public/assets/, checking each one
+    npm run assets:fetch -- --og    # also takes the live og-image.png (otherwise the temporary one in public/assets stays)
+    npm run build
+The build detects the files automatically: no code change is needed, and anything missing keeps its text fallback.
+
+OFFICIAL ASSET SOURCES (read from the pages https://argix.net/ and https://argix.net/certifications/)
+  Logo (light backgrounds)  https://argix.net/assets/logo.svg           -> public/assets/logo.svg        (used in header and footer)
+  Logo (dark backgrounds)   https://argix.net/assets/logo-white.svg     -> public/assets/logo-white.svg  (not used by the light V2 design)
+  Social image              https://argix.net/assets/og-image.png       (live og:image; see "Social image" below)
+  Client logos (5)          https://argix.net/assets/clients/{american-telephysicians,cura4u,smartclinix,bizauras,udhc}.jpg
+  Certification badges (20) https://argix.net/assets/certs/{cissp,cism,cisa,iso27001la,oscp,osep,oswe,osed,osce3,crtp,crest-cpsa,
+                            crest-crt,ewptx,ecppt,ceh,ceh-practical,cbbh,ecir,ecthp,chfi}.jpg
+These are the images Argix itself publishes for these items. They were not independently verified against each issuer's own
+badge programme; the live site's context (each image sits beside its named credential) is the only verification available.
+
+STATUS
+  Logo ............ NOT OBTAINED (text wordmark "ARGIX" shown)
+  Favicon ......... NOT IDENTIFIED: the live pages list no favicon URL. public/favicon.svg is still a plain letter "A". Please supply the official file.
+  Client logos .... NOT OBTAINED (client names shown as text)
+  Cert badges ..... NOT OBTAINED (abbreviation, name and issuer shown as text)
+  Social image .... TEMPORARY version created: public/assets/og-image.png (1200x630, V2 light theme, text wordmark, live headline,
+                    no logo). Meta tags point to https://argix.net/assets/og-image.png, the same path the live site uses.
+                    Replace it with a version that includes the real logo once logo.svg is present, or use the live file via --og.
+
+REVERIFY AFTER DOWNLOADING
+  - open the site and confirm each badge/logo is undistorted and matches its label
+  - confirm you are entitled to reuse each third-party badge and client logo on the new site
+
+DIAGNOSIS OF THE DOWNLOAD FAILURE (re-tested during the Nexavoxa audit task)
+  `npm run assets:fetch` -> 27 of 27 files failed ("fetch failed"). Cause: DNS does not resolve argix.net (or nexavoxa.com) in the build
+  environment (curl error 6, Node ENOTFOUND). Package registries such as npm do resolve, so this is a network allow-list, not a site outage
+  and not a script bug. An earlier test through the egress proxy returned HTTP 403 "host_not_allowed".
+  Options: (1) add argix.net to the environment's network allow-list in settings, then re-run `npm run assets:fetch`;
+           (2) run `npm run assets:fetch` on your own machine and send back / commit the files in public/assets/;
+           (3) attach the logo, client logos and badge files to the chat.
+  No substitute, traced or stock artwork is used for any of them.
