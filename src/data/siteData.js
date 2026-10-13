@@ -17,6 +17,14 @@ export const nav = [
 
 export const solutions = [
   {
+    id: 'secure',
+    title: 'Secure',
+    text: 'Penetration testing, SOC 2 and ISO 27001 readiness, SOC monitoring and vCISO.',
+    items: ['Penetration testing', 'SOC 2 and ISO 27001', 'SOC monitoring', 'vCISO'],
+    to: '/cybersecurity/',
+    cta: 'Explore cybersecurity'
+  },
+  {
     id: 'build',
     title: 'Build',
     text: 'Custom software, mobile apps and AI features on .NET, Angular and Python.',
@@ -31,14 +39,6 @@ export const solutions = [
     items: ['Azure', 'AWS', 'CI/CD', 'Infrastructure as code'],
     to: '/devops-cloud/',
     cta: 'Explore DevOps and cloud'
-  },
-  {
-    id: 'secure',
-    title: 'Secure',
-    text: 'Penetration testing, SOC 2 and ISO 27001 readiness, SOC monitoring and vCISO.',
-    items: ['Penetration testing', 'SOC 2 and ISO 27001', 'SOC monitoring', 'vCISO'],
-    to: '/cybersecurity/',
-    cta: 'Explore cybersecurity'
   },
 ];
 
