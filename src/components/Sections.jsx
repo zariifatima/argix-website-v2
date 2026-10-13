@@ -25,7 +25,7 @@ export const Services = () => (
         <Reveal key={s.title}><Link to={D.servicePath(s)} className={`bcard ${i === 0 ? 'big' : ''}`}>
           <span className="ico"><Icon size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <h3>{s.title}</h3><p>{s.summary}</p>
-          <span className="tech">{s.bullets[0]}</span><ArrowUpRight className="go" size={20} strokeWidth={1.75} aria-hidden="true" /></Link></Reveal>); })}</div></div>))}
+          <ul className="service-points" aria-label="Included services">{s.bullets.map((point) => <li key={point}>{point}</li>)}</ul><ArrowUpRight className="go" size={20} strokeWidth={1.75} aria-hidden="true" /></Link></Reveal>); })}</div></div>))}
   </section>);
 
 export const Technology = () => (
