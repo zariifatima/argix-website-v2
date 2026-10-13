@@ -228,4 +228,3 @@ export const principles = [
   ['Evidence over promises', 'We deliver reports, tests and documentation you can show auditors and customers.'],
   ['Accountable after launch', 'We stay involved through monitoring, support and fixes.']
 ];
-```
