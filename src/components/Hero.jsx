@@ -9,34 +9,35 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="pill">
             <span className="pdot" aria-hidden="true" />
-            Secure by design. Ready for what’s next.
+            Cybersecurity · Software · AI
           </p>
 
           <h1>
-            Cybersecurity first. Smarter software. AI built for business.
+            Secure your business. Build better technology. Move forward with AI.
           </h1>
 
           <p className="lead">
-            Protect your systems, strengthen your security posture and build
-            better digital solutions with Argix. From cybersecurity services
-            and compliance support to custom software and AI automation, bring
-            your technology goals together with one partner.
+            Bring software engineering and cybersecurity together with one
+            technology partner. Argix helps you assess risk, build useful
+            digital products, modernize cloud operations and adopt AI with
+            security and governance in mind.
           </p>
 
           <div className="row">
             <Link to="/contact/" className="btn primary">
-              Talk to our team
+              Book a free consultation
             </Link>
             <Link to="/services/" className="btn ghost">
               Explore our services
             </Link>
           </div>
 
-          <p className="muted small">
-            Tell us about your goals. We’ll discuss your needs and possible next steps.
+          <p className="muted small hero-note">
+            A practical first conversation about your goals, current challenges
+            and possible next steps — with no obligation.
           </p>
 
-          <ul className="tags fw" aria-label="Technologies and frameworks">
+          <ul className="tags fw" aria-label="Frameworks and standards">
             {frameworksStrip.map((f) => (
               <li key={f}>{f}</li>
             ))}
