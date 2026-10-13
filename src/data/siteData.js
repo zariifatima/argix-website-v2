@@ -1,4 +1,3 @@
-```javascript
 // Source of truth: https://argix.net (audited 1 Oct 2026). Do not add claims that are not on the live site.
 export const EMAIL = 'info@argix.net';
 export const WHATSAPP = { label: '+92 331 4009939', url: 'https://wa.me/923314009939' };
