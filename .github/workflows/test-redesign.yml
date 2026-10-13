@@ -11,9 +11,10 @@ permissions:
 
 jobs:
   build:
+    name: Verify data exports and build
     runs-on: ubuntu-latest
     steps:
-      - name: Get source code
+      - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -25,33 +26,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Debug navigation export
+      - name: Verify shared site data exports
         run: |
-          echo "=== Current commit ==="
-          git rev-parse HEAD
-          echo "=== Navigation declaration in siteData.js ==="
-          grep -n -E 'nav|export' src/data/siteData.js | head -25
-          echo "=== First 30 lines of siteData.js ==="
-          sed -n '1,30p' src/data/siteData.js
+          node --input-type=module <<'NODE'
+          import * as data from './src/data/siteData.js';
 
+          const required = ['nav', 'services', 'industries', 'otherIndustries', 'EMAIL', 'WHATSAPP', 'LINKEDIN', 'INSTAGRAM', 'servicePath'];
+          const missing = required.filter((name) => !(name in data));
 
-     
-      - name: Debug resolved module
-        run: |
-          echo "=== Footer import ==="
-          sed -n '1,8p' src/components/Footer.jsx
-          echo "=== File paths and case ==="
-          find src/data -maxdepth 2 -type f -print
-          echo "=== Git status ==="
-          git status --short
-          echo "=== Export in source ==="
-          grep -n 'export const services' src/data/siteData.js
-          echo "=== Duplicate siteData files ==="
-          find src -iname 'siteData.js' -o -iname 'siteData.jsx'
-          
-      - name: Test siteData module exports
-        run: |
-          node --input-type=module -e "import('./src/data/siteData.js').then(m => console.log('Exports:', Object.keys(m).join(', '), 'services:', Array.isArray(m.services)))"
+          console.log('siteData.js exports:', Object.keys(data).sort().join(', '));
+          if (missing.length) {
+            console.error('Missing required exports:', missing.join(', '));
+            process.exit(1);
+          }
+          if (!Array.isArray(data.nav) || !Array.isArray(data.services)) {
+            console.error('Expected nav and services to be arrays.');
+            process.exit(1);
+          }
+          console.log(`Validated ${data.nav.length} navigation links and ${data.services.length} services.`);
+          NODE
 
       - name: Build website
         run: npm run build
