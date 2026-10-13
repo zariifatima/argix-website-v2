@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { nav } from '../data/siteData.js';
+
 
 const nav = [
   ['Cybersecurity', '/cybersecurity/'],
