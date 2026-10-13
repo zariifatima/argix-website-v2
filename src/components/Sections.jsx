@@ -19,8 +19,8 @@ export const Solutions = () => (
   </section>);
 
 export const Services = () => (
-  <section className="sec wrap" id="services"><Head title="Technology built around your business." lead="Twelve services across software, AI and cybersecurity. Use them together or on their own." />
-    {['Build and run', 'Secure and comply'].map((g) => (<div key={g} className="grp"><h3 className="gt">{g}</h3>
+  <section className="sec wrap" id="services"><Head title="Cybersecurity first. Technology built around your business." lead="Start with protection, testing and compliance. Add secure software, cloud and AI services as your business grows." />
+    {['Secure and comply', 'Build and run'].map((g) => (<div key={g} className={`grp ${g === 'Secure and comply' ? 'grp-secure' : 'grp-build'}`}><h3 className="gt">{g}</h3>
       <div className="bento">{D.services.filter((s) => s.group === g && !s.hubOnly).map((s, i) => { const Icon = serviceIcon[s.slug]; return (
         <Reveal key={s.title}><Link to={D.servicePath(s)} className={`bcard ${i === 0 ? 'big' : ''}`}>
           <span className="ico"><Icon size={22} strokeWidth={1.75} aria-hidden="true" /></span>
