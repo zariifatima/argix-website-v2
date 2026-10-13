@@ -25,6 +25,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug navigation export
+        run: |
+          echo "=== Current commit ==="
+          git rev-parse HEAD
+          echo "=== Navigation declaration in siteData.js ==="
+          grep -n -E 'nav|export' src/data/siteData.js | head -25
+          echo "=== First 30 lines of siteData.js ==="
+          sed -n '1,30p' src/data/siteData.js
+
+
       - name: Build website
         run: npm run build
         env:
