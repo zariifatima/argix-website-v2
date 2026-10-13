@@ -28,6 +28,38 @@ export const Services = () => (
           <ul className="service-points" aria-label="Included services">{s.bullets.map((point) => <li key={point}>{point}</li>)}</ul><ArrowUpRight className="go" size={20} strokeWidth={1.75} aria-hidden="true" /></Link></Reveal>); })}</div></div>))}
   </section>);
 
+
+export const FeaturedServices = () => {
+  const featured = ['cybersecurity', 'penetration-testing', 'grc-compliance', 'custom-software', 'web-app-development', 'ai-solutions']
+    .map((slug) => D.services.find((service) => service.slug === slug))
+    .filter(Boolean);
+
+  return (
+    <section className="sec featured-services" id="featured-services">
+      <div className="wrap">
+        <Head title="The right expertise, without the complexity." lead="Start with the challenge you need to solve. Explore our core services, then open a dedicated page for the full scope, approach and deliverables." />
+        <div className="featured-grid">
+          {featured.map((service, index) => {
+            const Icon = serviceIcon[service.slug];
+            return (
+              <Reveal key={service.title}>
+                <Link to={D.servicePath(service)} className="featured-card">
+                  <span className="featured-icon">{Icon && <Icon size={22} strokeWidth={1.8} aria-hidden="true" />}</span>
+                  <span className="featured-number">0{index + 1}</span>
+                  <h3>{service.title}</h3>
+                  <p>{service.summary}</p>
+                  <span className="featured-link">Explore service <Arrow /></span>
+                </Link>
+              </Reveal>
+            );
+          })}
+        </div>
+        <div className="more-l"><Link to="/services/" className="btn ghost">View all services <Arrow /></Link></div>
+      </div>
+    </section>
+  );
+};
+
 export const Technology = () => (
   <section className="sec alt" id="technology"><div className="wrap"><Head title="Built with modern technology." lead="The stacks and platforms named across our services." /></div>
     <div className="marq" aria-label={D.tech.join(', ')}><div className="track">{[...D.tech, ...D.tech].map((t, i) => <span key={i} className="chip2" aria-hidden={i >= D.tech.length}>{t}</span>)}</div></div>
