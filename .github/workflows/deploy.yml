@@ -1,4 +1,3 @@
-
 name: Deploy Argix website to GitHub Pages
 
 on:
@@ -30,11 +29,11 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci      - name: Fetch official Argix assets when available
+        run: npm ci
+
+      - name: Fetch official Argix assets when available
         run: npm run assets:fetch
         continue-on-error: true
-
-
 
       - name: Build website
         run: npm run build
