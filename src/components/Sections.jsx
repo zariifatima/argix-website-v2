@@ -10,7 +10,7 @@ import { certImg, clientImg } from '../assets.js';
 const catIcon = { build: Code, run: Cloud, secure: ShieldCheck };
 
 export const Solutions = () => (
-  <section className="sec wrap alt" id="solutions"><Head title="One technology partner. Every stage." lead="Software, cloud and security from one team, so the people who build your system also understand how it can fail." />
+  <section className="sec wrap alt dark-section" id="solutions"><Head title="One technology partner. Every stage." lead="Software, cloud and security from one team, so the people who build your system also understand how it can fail." />
     <div className="cats">{D.solutions.map((s, i) => { const I = catIcon[s.id]; return (
       <Reveal key={s.id}><article className="cat"><div className="cat-top"><span className="cat-n">0{i + 1}</span><span className="ico"><I size={22} strokeWidth={1.75} aria-hidden="true" /></span></div>
         <h3>{s.title}</h3><p>{s.text}</p>
