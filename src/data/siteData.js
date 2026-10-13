@@ -59,7 +59,7 @@ export const services = [
   { group: 'Secure and comply', slug: 'vciso', title: 'vCISO and outsourced security', summary: 'A virtual CISO, a managed security program or a full outsourced security department.', bullets: ['Virtual CISO', 'Security program management', 'Outsourced security department'] },
 ];
 
-export const servicePath = (s) => `/${s.slug}/${s.hash ? '#' + s.hash : ''}`;
+export const servicePath = (s) => '/' + s.slug + '/' + (s.hash ? '#' + s.hash : '');
 
 export const industries = [
   { slug: 'healthcare', title: 'Healthcare', summary: 'EHR, interoperability, healthcare AI and virtual care, with HIPAA-aligned security.', bullets: ['HL7 and FHIR', 'Healthcare AI', 'Telehealth and patient portals'] },
