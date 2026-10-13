@@ -48,6 +48,10 @@ jobs:
           grep -n 'export const services' src/data/siteData.js
           echo "=== Duplicate siteData files ==="
           find src -iname 'siteData.js' -o -iname 'siteData.jsx'
+          
+      - name: Test siteData module exports
+        run: |
+          node --input-type=module -e "import('./src/data/siteData.js').then(m => console.log('Exports:', Object.keys(m).join(', '), 'services:', Array.isArray(m.services)))"
 
       - name: Build website
         run: npm run build
