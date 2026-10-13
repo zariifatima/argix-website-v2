@@ -35,6 +35,20 @@ jobs:
           sed -n '1,30p' src/data/siteData.js
 
 
+     
+      - name: Debug resolved module
+        run: |
+          echo "=== Footer import ==="
+          sed -n '1,8p' src/components/Footer.jsx
+          echo "=== File paths and case ==="
+          find src/data -maxdepth 2 -type f -print
+          echo "=== Git status ==="
+          git status --short
+          echo "=== Export in source ==="
+          grep -n 'export const services' src/data/siteData.js
+          echo "=== Duplicate siteData files ==="
+          find src -iname 'siteData.js' -o -iname 'siteData.jsx'
+
       - name: Build website
         run: npm run build
         env:
