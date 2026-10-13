@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { nav } from '../data/siteData.js';
+
+const nav = [
+  ['Cybersecurity', '/cybersecurity/'],
+  ['Services', '/services/'],
+  ['Industries', '/industries/'],
+  ['AI', '/ai-solutions/'],
+  ['About', '/about/'],
+  ['Insights', '/blog/'],
+  ['Contact', '/contact/'],
+];
+
 import Logo from './Logo.jsx';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false); const [open, setOpen] = useState(false); const loc = useLocation();
