@@ -1,9 +1,21 @@
 import Hero from '../components/Hero.jsx';
-import AIDemo from '../components/AIDemo.jsx';
-import { Solutions, Services, Technology, Process, Security, SecurityDept, Industries, AboutBlock, Trust, CertPreview, FAQ, CTA } from '../components/Sections.jsx';
+import { Solutions, FeaturedServices, Industries, CertPreview, FAQ, CTA } from '../components/Sections.jsx';
 import { usePageMeta } from '../hooks.js';
 import { staticMeta } from '../data/siteData.js';
+
+// The homepage is an overview, not a replacement for the detailed service pages.
+// Each service card directs visitors to a dedicated page with the full scope and information.
 export default function Home() {
   usePageMeta(staticMeta['/'], '/');
-  return (<><Hero /><Solutions /><Services /><AIDemo /><Process /><Technology /><Security /><SecurityDept /><Industries /><AboutBlock /><Trust /><CertPreview /><FAQ /><CTA /></>);
+  return (
+    <>
+      <Hero />
+      <FeaturedServices />
+      <Solutions />
+      <Industries />
+      <CertPreview />
+      <FAQ />
+      <CTA />
+    </>
+  );
 }
