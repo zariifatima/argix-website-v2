@@ -6,7 +6,7 @@ export const LINKEDIN = 'https://www.linkedin.com/company/argix-net';
 export const INSTAGRAM = 'https://www.instagram.com/argix_net/';
 export const SITE = 'https://argix.net';
 
-const nav = [
+export const nav = [
   ['Cybersecurity', '/cybersecurity/'],
   ['Services', '/services/'],
   ['Industries', '/industries/'],
@@ -15,8 +15,6 @@ const nav = [
   ['Insights', '/blog/'],
   ['Contact', '/contact/'],
 ];
-
-export { nav };
 
 export const solutions = [
   {
